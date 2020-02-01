@@ -25,6 +25,7 @@ export const LogoText = styled.div`
   color: #333;
   padding-bottom: 5px;
   letter-spacing: -1.5px;
+  text-decoration: none;
 `
 
 export const SearchBarContainer = styled.div`

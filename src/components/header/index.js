@@ -1,6 +1,10 @@
 import React from 'react'
 
 import {
+  Link,
+} from "react-router-dom";
+
+import {
   StyledHeader,
   SearchBarContainer,
   LogoText,
@@ -18,7 +22,9 @@ import {
 export default function Header() {
   return (
     <StyledHeader>
-      <LogoText>chat'D</LogoText>
+      <Link to="/">
+        <LogoText>chat'D</LogoText>
+      </Link>
       <SearchBarContainer>
         <Search />
       </SearchBarContainer>
@@ -27,7 +33,9 @@ export default function Header() {
           <TrendingUp alt="trending" />
         </HeaderIcon>
         <HeaderIcon>
-          <User alt="profile" />
+          <Link to="/profile">
+            <User alt="profile" />
+          </Link>
         </HeaderIcon>
         <HeaderIcon>
           <Send alt="inbox" />
