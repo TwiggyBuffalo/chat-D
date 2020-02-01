@@ -26,7 +26,7 @@ const MonkeyContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  font-size: 120px;
+  font-size: 90px;
 `
 
 const LoginButtonContainer = styled.div`
@@ -42,7 +42,7 @@ const ResetLinkContainer = styled.div`
   margin-top: 20px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   cursor: pointer;
 `
@@ -61,6 +61,14 @@ const Logo = styled.h1`
   align-items: center;
   width: 100%;
   margin: 0;
+`
+
+const Description = styled.h3`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #222;
 `
 
 export default function Login() {
@@ -88,8 +96,9 @@ export default function Login() {
   return (
     <LoginWrapper>
       <Fragment>
-        <MonkeyContainer>{passwordFocused ? "🙈" : "🐵"}</MonkeyContainer>
-        <Logo>chat'D</Logo>
+        <MonkeyContainer>{`🤔`}</MonkeyContainer>
+        <Logo>Can't remember?</Logo>
+        <Description>We'll send you a link.</Description>
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
@@ -105,23 +114,13 @@ export default function Login() {
                   <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
                 </LabelContainer>
                 <LoginField type="email" name="email" onFocus={() => setPwdFocused(false)} error={errors.email && touched.email} />
-
-                <LabelContainer>
-                  <Label>Password:</Label>
-                  <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
-                </LabelContainer>
-                <LoginField type="password" name="password" onFocus={() => setPwdFocused(true)} error={errors.password && touched.password} />
-
                 <LoginButtonContainer>
                   <LoginButton type="submit" disabled={isSubmitting}>
-                    Login
+                    I am a silly goose!
                   </LoginButton>
                   <ResetLinkContainer>
-                    <Link to="/forgot">
-                      Forgot password?
-                    </Link>
-                    <Link to="/register">
-                      Create an account
+                    <Link to="/login">
+                      Back to Login
                     </Link>
                   </ResetLinkContainer>
                 </LoginButtonContainer>

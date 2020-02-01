@@ -7,14 +7,13 @@ export default styled.button`
   letter-spacing: .0892857143em;
   text-decoration: none;
   text-transform: uppercase;
-  padding: 10px 15px;
+  padding: 15px;
   display: inline-flex;
   position: relative;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   min-width: 64px;
-  max-width: 200px;
   width: 100%;
   border: none;
   outline: none;

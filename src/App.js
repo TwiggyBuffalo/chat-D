@@ -10,6 +10,8 @@ import { Provider } from 'unstated'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
+import Register from './pages/Register'
+import Forgot from './pages/Forgot'
 
 import ProtectedRoute from './components/auth'
 
@@ -20,6 +22,8 @@ export default class App extends Component {
         <Router>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/forgot" component={Forgot} />
             <ProtectedRoute path="/profile" component={Profile} />
             <ProtectedRoute path="/" component={Home} />
           </Switch>

@@ -26,7 +26,7 @@ const MonkeyContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  font-size: 120px;
+  font-size: 90px;
 `
 
 const LoginButtonContainer = styled.div`
@@ -63,6 +63,14 @@ const Logo = styled.h1`
   margin: 0;
 `
 
+const Description = styled.h3`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #222;
+`
+
 export default function Login() {
   const doLogin = (values, { setSubmitting }) => {
     const { email, password } = values
@@ -88,8 +96,9 @@ export default function Login() {
   return (
     <LoginWrapper>
       <Fragment>
-        <MonkeyContainer>{passwordFocused ? "🙈" : "🐵"}</MonkeyContainer>
-        <Logo>chat'D</Logo>
+        <MonkeyContainer>{`👋🏼`}</MonkeyContainer>
+        <Logo>Welcome,</Logo>
+        <Description>Enter your details below to create an account.</Description>
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
@@ -114,14 +123,11 @@ export default function Login() {
 
                 <LoginButtonContainer>
                   <LoginButton type="submit" disabled={isSubmitting}>
-                    Login
+                    Join
                   </LoginButton>
                   <ResetLinkContainer>
-                    <Link to="/forgot">
-                      Forgot password?
-                    </Link>
-                    <Link to="/register">
-                      Create an account
+                    <Link to="/login">
+                      Back to Login
                     </Link>
                   </ResetLinkContainer>
                 </LoginButtonContainer>
