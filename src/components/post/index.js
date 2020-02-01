@@ -8,7 +8,7 @@ import {
 
 
 export default function Post(props) {
-  const { title, author, url } = props
+  const { title } = props
   return (
     <Fragment>
       <Tile>

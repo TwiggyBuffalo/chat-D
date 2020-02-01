@@ -6,8 +6,7 @@ import {
   Posts,
 } from './styles'
 
-export default function Feed(props) {
-  const { children: posts } = props
+export default function Feed() {
   return (
     <Posts>
       <Post

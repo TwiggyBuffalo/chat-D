@@ -1,28 +1,30 @@
 
-import React from "react";
+import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
+import { Provider } from 'unstated'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
+import Login from './pages/Login'
 
-export default () => {
-  return (
-    <Router>
+import ProtectedRoute from './components/auth'
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-    </Router>
-  )
+export default class App extends Component {
+  render() {
+    return (
+      <Provider>
+        <Router>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <ProtectedRoute path="/profile" component={Profile} />
+            <ProtectedRoute path="/" component={Home} />
+          </Switch>
+        </Router>
+      </Provider>
+    )
+  }
 }

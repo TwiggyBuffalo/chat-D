@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components'
 
 export const Title = styled.div`
   height: 20px;
-  width: 150px;
+  width: 170px;
   border-radius: 10px;
   opacity: 0.1;
   background-color: #000;
@@ -13,10 +13,9 @@ export const Title = styled.div`
 export const Tile = styled.div`
   opacity: 0.7;
   height: 230px;
-  width: 600px;
+  width: 650px;
   background-color: #fff;
   border-radius: 20px;
-  margin-right: 15px;
   margin-bottom: 20px;
   overflow: hidden;
   margin-top: 30px;

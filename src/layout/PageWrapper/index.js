@@ -4,9 +4,9 @@ import {
   PageContainer,
 } from './styles'
 
-export default function PageWrapper({ children: pageContent, center }) {
+export default function PageWrapper({ children: pageContent, center, col }) {
   return (
-    <PageContainer center={center}>
+    <PageContainer center={center} col={col}>
       {pageContent}
     </PageContainer>
   )

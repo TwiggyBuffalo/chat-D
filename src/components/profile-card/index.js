@@ -18,7 +18,7 @@ import {
 } from './styles'
 
 export default function ProfileCard(props) {
-  const { name, email, icon, bio, followers, following, posts } = props
+  const { name, email, bio, followers, following, posts } = props
   return (
     <Card>
       <CardTop>

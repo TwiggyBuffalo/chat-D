@@ -16,7 +16,6 @@ import {
 import {
   User,
   TrendingUp,
-  Send,
 } from 'react-feather'
 
 export default function Header() {
@@ -36,9 +35,6 @@ export default function Header() {
           <Link to="/profile">
             <User alt="profile" />
           </Link>
-        </HeaderIcon>
-        <HeaderIcon>
-          <Send alt="inbox" />
         </HeaderIcon>
       </HeaderLinks>
     </StyledHeader>

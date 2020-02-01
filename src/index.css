@@ -16,3 +16,7 @@ code {
 a {
   text-decoration: none;
 }
+
+a:active {
+  color: inherit;
+}
