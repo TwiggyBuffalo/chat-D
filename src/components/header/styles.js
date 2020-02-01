@@ -19,10 +19,11 @@ export const LogoText = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 30px;
-  height: 100%;
   font-weight: 600;
   margin: 0 10px;
   color: #333;
+  height: 100%;
+  max-height: 100px;
   padding-bottom: 5px;
   letter-spacing: -1.5px;
   text-decoration: none;
