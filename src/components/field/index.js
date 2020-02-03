@@ -11,7 +11,7 @@ export default styled(Field)`
   border-radius: 5px;
   margin: 10px 0px;
   width: 100%;
-  border: 2px solid ${props => props.error ? 'red' : '#ccc'};
+  border: 2px solid ${props => props.error && props.touched[props.name] ? 'red' : '#ccc'};
   box-sizing: border-box;
   box-shadow: inset 0 2px 10px 0 rgba(134,141,155,0.2);
 `

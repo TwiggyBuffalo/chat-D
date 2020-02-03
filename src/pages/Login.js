@@ -8,7 +8,6 @@ import AuthContainer from '../containers/auth'
 
 import LoginWrapper from '../layout/LoginWrapper'
 
-import toast from 'just-toasty'
 import styled from 'styled-components'
 
 import Label from '../components/label'
@@ -20,6 +19,7 @@ import LoginSchema from '../schemas/login'
 import LoginField from '../components/field'
 import LoginForm from '../components/form'
 import LoginButton from '../components/button'
+import LoginButtonSpinner from '../components/button/spinner'
 
 const MonkeyContainer = styled.div`
   display: flex;
@@ -59,32 +59,13 @@ const Logo = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 300%;
   width: 100%;
   margin: 0;
 `
 
-export default function Login() {
-  const doLogin = (values, { setSubmitting }) => {
-    const { email, password } = values
-    AuthContainer.login(email, password).then(response => {
-      toast('Redirecting...')
-      window.location.href = '/'
-    }).catch(error => {
-      if (loginAttempts <= 3) {
-        toast('Login unsucessful. Please check your details and try again.')
-        setLoginAttemps(loginAttempts + 1)
-      } else {
-        toast('Hmmm... Maybe try resetting your password?')
-      }
-
-    })
-    setSubmitting(false)
-    // authContainer.login()
-  }
-
+export default function Login({ history }) {
   const [passwordFocused, setPwdFocused] = useState(false)
-
-  const [loginAttempts, setLoginAttemps] = useState(0)
   return (
     <LoginWrapper>
       <Fragment>
@@ -93,28 +74,27 @@ export default function Login() {
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
-          onSubmit={doLogin}
+          onSubmit={(values, { setSubmitting }) => AuthContainer.login(values.email, values.password, history.pathname, setSubmitting)}
         >
           {({ isSubmitting, errors, touched }) => {
-            console.log(touched)
             return (
               <LoginForm>
 
                 <LabelContainer>
-                  <Label>Email:</Label>
+                  <Label>Username / Email:</Label>
                   <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
                 </LabelContainer>
-                <LoginField type="email" name="email" onFocus={() => setPwdFocused(false)} error={errors.email && touched.email} />
+                <LoginField type="email" name="email" onFocus={() => setPwdFocused(false)} error={errors.email} touched={touched} autoComplete="username" />
 
                 <LabelContainer>
                   <Label>Password:</Label>
                   <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
                 </LabelContainer>
-                <LoginField type="password" name="password" onFocus={() => setPwdFocused(true)} error={errors.password && touched.password} />
+                <LoginField type="password" name="password" onFocus={() => setPwdFocused(true)} error={errors.password} touched={touched} autoComplete="current-password" />
 
                 <LoginButtonContainer>
                   <LoginButton type="submit" disabled={isSubmitting}>
-                    Login
+                    {isSubmitting ? <LoginButtonSpinner /> : 'Login'}
                   </LoginButton>
                   <ResetLinkContainer>
                     <Link to="/forgot">

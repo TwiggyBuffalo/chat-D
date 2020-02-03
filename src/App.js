@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
 } from "react-router-dom";
 
 import { Provider } from 'unstated'
@@ -13,7 +12,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Forgot from './pages/Forgot'
 
-import ProtectedRoute from './components/auth'
+import Route from './components/routes'
 
 export default class App extends Component {
   render() {
@@ -21,11 +20,11 @@ export default class App extends Component {
       <Provider>
         <Router>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/forgot" component={Forgot} />
-            <ProtectedRoute path="/profile" component={Profile} />
-            <ProtectedRoute path="/" component={Home} />
+            <Route path="/login" component={Login} noAuth/>
+            <Route path="/register" component={Register} noAuth/>
+            <Route path="/forgot" component={Forgot} noAuth/>
+            <Route path="/profile" component={Profile} />
+            <Route path="/" component={Home} />
           </Switch>
         </Router>
       </Provider>
